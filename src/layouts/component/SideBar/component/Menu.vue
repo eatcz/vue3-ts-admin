@@ -12,7 +12,7 @@
     <!-- 如果只有一个子路由 -->
     <el-menu-item
       v-if="item.children && item.children.length == 1"
-      index="item.children[0].path"
+      :index="item.children[0].path"
     >
       <el-icon><setting /></el-icon>
       <template #title>

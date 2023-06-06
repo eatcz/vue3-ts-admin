@@ -15,12 +15,6 @@ const constantRoute = [
         component: () => import('@/views/Home/index.vue'),
         meta: { title: '首页', hidden: false },
       },
-      {
-        path: '/index',
-        name: 'HomeIndex',
-        component: () => import('@/views/Home/index.vue'),
-        meta: { title: '测试', hidden: false },
-      },
     ],
   },
   // 登录

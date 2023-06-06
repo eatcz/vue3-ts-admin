@@ -2,6 +2,7 @@
   <div class="home">
     <el-card>
       <div>123</div>
+      <svg-icon name="hot"></svg-icon>
     </el-card>
   </div>
 </template>
