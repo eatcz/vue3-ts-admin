@@ -5,7 +5,7 @@ export const useUserStore = defineStore('User', {
   state: (): UserState => {
     return {
       token: '',
-      constantRoute,
+      menus: constantRoute,
     }
   },
   actions: {},

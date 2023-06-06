@@ -1,25 +1,47 @@
 <template>
-  <el-menu
-    default-active="2"
-    class="el-menu-vertical-demo"
-    @open="handleOpen"
-    @close="handleClose"
-  >
-    <el-sub-menu index="1">
+  <!-- 递归遍历路由 -->
+  <!-- 如果没有子路由 -->
+  <template v-for="item in props.menuLists" :key="item.path">
+    <template v-if="!item.children">
+      <el-menu-item v-if="!item.meta.hidden" :index="item.path">
+        <el-icon><setting /></el-icon>
+        <span>{{ item.meta.title }}</span>
+      </el-menu-item>
+    </template>
+
+    <!-- 如果只有一个子路由 -->
+    <el-menu-item
+      v-if="item.children && item.children.length == 1"
+      index="item.children[0].path"
+    >
+      <el-icon><setting /></el-icon>
+      <template #title>
+        <span>{{ item.children[0].meta.title }}</span>
+      </template>
+    </el-menu-item>
+    <!-- 如果有子路由并且大于等于2个 -->
+    <el-sub-menu v-if="item.children && item.children.length > 1" index="1">
       <template #title>
         <el-icon><location /></el-icon>
-        <span>Navigator One</span>
+        <span>{{ item.meta.title }}</span>
       </template>
-      <el-sub-menu index="1-4">
-        <template #title>item four</template>
-        <el-menu-item index="1-4-1">item one</el-menu-item>
-      </el-sub-menu>
+      <Menus :menuLists="item.children" />
     </el-sub-menu>
-    <el-menu-item v-for="item in 15" :key="item" index="3">
-      <el-icon><setting /></el-icon>
-      <span>Navigator Four</span>
-    </el-menu-item>
-  </el-menu>
+  </template>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import type { RouteRecordRaw } from 'vue-router'
+const props = defineProps({
+  menuLists: {
+    type: Array<RouteRecordRaw>,
+    default: [],
+  },
+})
+</script>
+
+<script lang="ts">
+export default {
+  name: 'Menus',
+}
+</script>

@@ -1,12 +1,13 @@
 import type { Component } from 'vue'
-interface routeType {
-  path: string
-  name: string
-  component: Component
-  children?: Array<routeType>
-}
+import type { RouteRecordRaw } from 'vue-router'
+// interface routeType {
+//   path: string
+//   name: string
+//   component: Component
+//   children?: Array<routeType>
+// }
 
 export interface UserState {
   token: string
-  constantRoute: Array<routeType>
+  menus: Array<RouteRecordRaw>
 }
