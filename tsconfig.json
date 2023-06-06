@@ -5,6 +5,11 @@
     "module": "ESNext",
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "skipLibCheck": true,
+    // 解决ts下找不到模块“@/components/xxx.vue”或其相应的类型声明。
+    "paths": {
+      "@/*": ["./src/*"]
+
+    },
 
     /* Bundler mode */
     "moduleResolution": "bundler",

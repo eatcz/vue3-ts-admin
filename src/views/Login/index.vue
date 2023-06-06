@@ -1,71 +1,65 @@
 <template>
-  <div class="w-full h-screen login_container bg-sky-500">
-    <!-- 头部 -->
-    <header class="bg-gray-800 h-1/5"></header>
-    <!-- 主体 -->
-    <main
-      class="flex items-center justify-end bg-gray-500 h-4/5 px-5 lg:px-[75px]"
-    >
-      <!-- 登录盒子 -->
-      <div
-        class="w-full bg-white rounded-lg login_wrapper lg:min-w-[650px] h-4/5 lg:max-h-[538px] :lg:h-1/2 lg:w-1/3 px-10 py-[70px]"
-      >
-        <!-- 登录表单 -->
-        <el-form
-          ref="formRef"
-          :model="form"
-          class="demo-form"
-          label-width="80px"
-        >
-          <el-form-item label="用户名" prop="pass">
-            <el-input v-model="form.account" autocomplete="off" />
-          </el-form-item>
-          <el-form-item label="密码" prop="pass">
-            <el-input
-              v-model="form.password"
-              type="password"
-              autocomplete="off"
-            />
-          </el-form-item>
-
-          <footer class="w-full">
-            <el-button type="primary" @click="submit">登录</el-button>
-          </footer>
-        </el-form>
+  <div class="login_container p-5">
+    <div class="login_wrapper p-5">
+      <div class="theme_bar flex">
+        <Switch />
       </div>
-    </main>
+      <div class="grid login">
+        <div class="login_pic"></div>
+        <component :is="LoginForm"></component>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { reactive } from 'vue'
-
-// 表单数据
-let form = reactive({
-  account: '',
-  password: '',
-})
-// 登录
-const submit = (): void => {
-  console.log(form)
-}
+import Switch from '@/components/Switch/index.vue'
+import LoginForm from './component/LoginForm.vue'
 </script>
 
-<style lang="scss" scoped></style>
-
-<style scoped>
-/* 设置label */
-:deep(.el-form-item__label) {
-  justify-content: start;
+<style lang="scss" scoped>
+.login_container {
+  height: 100vh;
+  background-color: #eee;
+  background: $login-bg-img no-repeat center;
+  background-size: 100% 100%;
+  // 登录盒子
+  .login_wrapper {
+    width: 100%;
+    height: 100%;
+    background-color: rgba($color: #fff, $alpha: 0.8);
+    border-radius: 10px;
+  }
+  // 主题模式切换
+  .theme_bar {
+    width: 100%;
+    min-height: 2.5rem /* 40/16 */;
+    justify-content: end;
+  }
+  // 图片
 }
 
-/* 设置输入框间距 */
-:deep(.el-form-item) {
-  margin-top: 3.5rem /* 56/16 */;
+.login_pic {
+  display: none;
+  margin-right: 10px;
+  max-width: 800px;
+  // background: url('@/assets/images/login_left.png') no-repeat center;
+  // background-size: cover;
 }
-/* 设置按钮 */
-:deep(.el-button) {
-  width: 100%;
-  background-color: var(--el-color-primary);
+
+// 登录
+.login {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  height: 94%;
+}
+
+@media screen and (min-width: 48rem /* 768/16 */) {
+  .login {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .login_pic {
+    display: block;
+  }
 }
 </style>

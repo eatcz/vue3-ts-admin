@@ -1,9 +1,11 @@
 import { defineStore } from 'pinia'
-
+import constantRoute from '@/router/constantRoute'
+import type { UserState } from '../types/user'
 export const useUserStore = defineStore('User', {
-  state: () => {
+  state: (): UserState => {
     return {
-      count: 1,
+      token: '',
+      constantRoute,
     }
   },
   actions: {},

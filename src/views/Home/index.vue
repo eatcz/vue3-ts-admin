@@ -8,4 +8,11 @@
 
 <script setup lang="ts"></script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+.home {
+  height: 100%;
+}
+.el-card {
+  height: 100%;
+}
+</style>

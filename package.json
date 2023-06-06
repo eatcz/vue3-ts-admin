@@ -19,6 +19,7 @@
     "@pzy915/pdf-preview": "^0.0.3",
     "axios": "^1.4.0",
     "element-plus": "^2.3.6",
+    "mockjs": "^1.1.0",
     "pdfjs-dist": "2.12.313",
     "pinia": "^2.1.3",
     "scss": "^0.2.4",
