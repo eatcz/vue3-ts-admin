@@ -1,6 +1,7 @@
+import { RouteRecordRaw } from 'vue-router'
 import Layout from '@/layouts/index.vue'
 
-const constantRoute = [
+const constantRoute: Array<RouteRecordRaw> = [
   {
     path: '/',
     redirect: '/index',
@@ -27,8 +28,14 @@ const constantRoute = [
   {
     path: '/404',
     name: 'NotFound',
-    component: () => import('@/views/404.vue'),
+    component: () => import('@/views/Error/404.vue'),
     meta: { title: '404', hidden: true },
+  },
+  // Resolve refresh page, route warnings
+  {
+    path: '/:pathMatch(.*)*',
+    meta: { hidden: true },
+    component: () => import('@/views/Error/404.vue'),
   },
 ]
 

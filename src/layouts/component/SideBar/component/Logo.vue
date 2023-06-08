@@ -3,11 +3,16 @@
     <a class="logo" href="javascript:;">
       <img src="@/assets/images/logo.webp" alt="" />
     </a>
-    <h3 class="title">Eatcz Admin</h3>
+    <span class="title" v-show="!collapse">Eatcz Admin</span>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { computed } from 'vue'
+import { useGlobalStore } from '@/store/modules/global'
+const globalStore = useGlobalStore()
+const collapse = computed(() => globalStore.isCollapse)
+</script>
 
 <style lang="scss" scoped>
 .sidebar_logo {

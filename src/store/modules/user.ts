@@ -4,10 +4,12 @@ import type { UserState } from '../types/user'
 export const useUserStore = defineStore('User', {
   state: (): UserState => {
     return {
-      token: '',
+      token: '123',
       menus: constantRoute,
     }
   },
-  actions: {},
+  actions: {
+    login(loginInfo) {},
+  },
   getters: {},
 })

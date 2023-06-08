@@ -24,6 +24,7 @@ import globalComponent from '@/utils/directive'
 app.use(globalComponent)
 app.use(pinia)
 app.use(router)
-
+// 引入路由鉴权
+import '@/premission'
 app.mount('#app')
 // createApp(App).mount('#app')

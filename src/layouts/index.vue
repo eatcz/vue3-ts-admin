@@ -13,7 +13,8 @@ import LayoutMain from './layout_main/index.vue'
 <style lang="scss" scoped>
 .layout_container {
   width: 100%;
-  min-width: 680px;
+  // min-width: 680px;
+  min-width: 860px;
   min-height: 100vh;
   background-color: #f5f5f5;
 }

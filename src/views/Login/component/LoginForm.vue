@@ -40,7 +40,7 @@
     </el-form>
     <footer class="flex px-5 mt-5">
       <el-button type="default" size="large">重置</el-button>
-      <el-button type="primary" size="large">登录</el-button>
+      <el-button type="primary" size="large" @click="toLogin">登录</el-button>
     </footer>
   </div>
 </template>
@@ -49,11 +49,17 @@
 import { reactive } from 'vue'
 import type { userForm } from '../types/userForm.ts'
 import { loginFormRules } from '@/config/rules.ts'
+import { login } from '@/api/user'
 let form = reactive<userForm>({
   account: import.meta.env.VITE_APP_LOGIN_ACCOUNT,
   password: import.meta.env.VITE_APP_LOGIN_PASSWORD,
   verification_code: import.meta.env.VITE_APP_LOGIN_VERIFICATION_CODE,
 })
+
+const toLogin = async () => {
+  const res = await login(form)
+  console.log(res)
+}
 </script>
 
 <style lang="scss" scoped>
